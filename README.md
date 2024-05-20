@@ -62,7 +62,15 @@ Esta es una webapp simple desarrollada en Laravel que permite al usuario buscar 
     php artisan migrate
     ```
 
-6. Iniciar el servidor de desarrollo:
+6. Instalar las dependencias de Node.js y compilar los assets:
+
+    ```sh
+    npm install
+    
+    ```
+    (npm run dev no será necesaria si posees laravel =< 10.0.0)
+
+7. Iniciar el servidor de desarrollo:
 
     ```sh
     php artisan serve

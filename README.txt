@@ -55,7 +55,11 @@ Instalación
 
     php artisan migrate
 
-6. Iniciar el servidor de desarrollo:
+6. Instalar las dependencias de Node.js y compilar los assets:
+
+    npm install
+
+7. Iniciar el servidor de desarrollo:
 
     php artisan serve
 
