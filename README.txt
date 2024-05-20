@@ -73,10 +73,14 @@ Tecnologías Utilizadas
 - Laravel v.10.x
 - JavaScript (para las llamadas AJAX y la actualización de la vista sin recargar)
 - MySQL (o cualquier otra base de datos soportada por Laravel)
+- TailwindCSS
 
 Consideraciones adicionales
 ----------------------------
 Durante el desarrollo, se solicitó usar un proxy en el backend para realizar las llamadas a la API de Pokémon, mejorando la seguridad y permitiendo el manejo de errores de forma centralizada.
+
+Además, he agregado en PokemonController, en el método procesarBusqueda,una una verificación antes de guardar la búsqueda en la base de datos, si un término de búsqueda ya existe en el historial para la sesión actual, se devuelve un mensaje indicando que la búsqueda ya ha sido realizada y no se guarda de nuevo en la base de datos. Esto evitará que el historial se llene con búsquedas repetidas.
+
 
 Autor
 -----
