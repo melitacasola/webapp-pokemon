@@ -68,7 +68,7 @@ Esta es una webapp simple desarrollada en Laravel que permite al usuario buscar 
     npm install
     
     ```
-    (npm run dev no será necesaria si posees laravel =< 10.0.0)
+    (npm run dev no será necesaria si posees Laravel =< 10.0.0)
 
 7. Iniciar el servidor de desarrollo:
 
@@ -98,7 +98,7 @@ Durante el desarrollo, se decidió usar un proxy en el backend para realizar las
 
 Además, he agregado en el método procesarBusqueda del PokemonController, una verificación antes de guardar la búsqueda en la base de datos, si un término de búsqueda ya existe en el historial para la sesión actual, se devuelve un mensaje indicando que la búsqueda ya ha sido realizada y no se guarda de nuevo en la base de datos. Esto evitará que el historial se llene con búsquedas repetidas.
 
-    ```sh
+    
     $existingSearch = SearchHistory::where('term', $term)
                 ->where('session_id', $sessionId)
                 ->first();
@@ -106,7 +106,8 @@ Además, he agregado en el método procesarBusqueda del PokemonController, una v
             if ($existingSearch) {
                 return response()->json(['message' => 'Esta búsqueda ya ha sido realizada.'], 200);
             }
-    ```
+   
+    
 Si esta parte del codigo se comenta/borra - se guardan todos los términos de búsqueda exitosas de esa SESSION_ID sin importar si ya ha sido realizada la misma con anterioridad...
 
 ---
