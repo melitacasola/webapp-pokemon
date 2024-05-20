@@ -88,7 +88,18 @@ Esta es una webapp simple desarrollada en Laravel que permite al usuario buscar 
 
 Durante el desarrollo, se decidió usar un proxy en el backend para realizar las llamadas a la API de Pokémon, mejorando la seguridad y permitiendo el manejo de errores de forma centralizada.
 
-Además, he agregado en PokemonController, en el método procesarBusqueda,una una verificación antes de guardar la búsqueda en la base de datos, si un término de búsqueda ya existe en el historial para la sesión actual, se devuelve un mensaje indicando que la búsqueda ya ha sido realizada y no se guarda de nuevo en la base de datos. Esto evitará que el historial se llene con búsquedas repetidas.
+Además, he agregado en el método procesarBusqueda del PokemonController, una verificación antes de guardar la búsqueda en la base de datos, si un término de búsqueda ya existe en el historial para la sesión actual, se devuelve un mensaje indicando que la búsqueda ya ha sido realizada y no se guarda de nuevo en la base de datos. Esto evitará que el historial se llene con búsquedas repetidas.
+
+ ```sh
+    $existingSearch = SearchHistory::where('term', $term)
+                ->where('session_id', $sessionId)
+                ->first();
+
+            if ($existingSearch) {
+                return response()->json(['message' => 'Esta búsqueda ya ha sido realizada.'], 200);
+            }
+    ```
+Si esta parte del codigo se comenta/borra - se guardan todos los términos de búsqueda exitosas de esa SESSION_ID sin importar si ya ha sido realizada la misma con anterioridad...
 
 ---
 
